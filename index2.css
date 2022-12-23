@@ -1,0 +1,121 @@
+body
+{
+    min-height: 100%;
+    background-image: url("images/natuur.png");
+    height: 100%;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.titel
+{
+    font-size:300%;
+    text-align: center;
+
+}
+
+.main
+{
+    margin: 50px 150px 50px 150px;
+    padding-bottom: 20px;
+    padding-top:20px;
+    background: rgba(255, 255, 255, 0.37);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+
+
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    grid-template-rows: auto  ;
+
+
+
+
+}
+
+#start
+{
+    text-align: center;
+}
+
+.index
+{
+    padding-left:20px;
+}
+
+
+ul
+{
+    list-style: none;
+    font-size: 150%;
+}
+
+h1
+{
+    padding-left: 40px;
+    font-size: 200%;
+}
+
+li
+{
+    padding-bottom: 20px;
+}
+
+a
+{
+    color:black;
+
+}
+
+a:visited
+{
+    color: #294a05;
+}
+
+
+
+
+@media screen and (max-width: 768px)
+{
+    #main
+    {
+        margin: 50px 100px 50px 100px;
+        grid-template-columns:1fr 1fr ;
+        grid-template-rows: auto auto;
+        text-align: center;
+
+
+    }
+    .titel
+    {
+        font-size:200%;
+        text-align: center;
+    }
+    #html
+    {
+        grid-area: 1/1/1/2;
+    }
+    #css
+    {
+        grid-area: 2/1/2/2;
+    }
+    h1
+    {
+        font-size: 150%;
+    }
+
+    ul
+    {
+        font-size: 150%;
+    }
+
+
+
+}

@@ -1,0 +1,25 @@
+/*
+.box
+{
+    height: 200px;
+    box-sizing: border-box;
+    border: white 10px solid;
+}
+*/
+
+.grey
+{
+    background-color: grey;
+}
+
+.darkgrey
+{
+    background-color: darkgrey;
+}
+div[class *='col']
+{
+    height: 200px;
+    box-sizing: border-box;
+    border: white 10px solid;
+}
+

@@ -1,0 +1,240 @@
+body
+{
+    margin: 0px 0px 0px 0px;
+    width: 100%;
+    font-family: Helvetica, sans-serif;
+}
+
+h1
+{
+    font-variant: all-small-caps;
+    font-size: 2.5em;
+    border-bottom: solid black 2px;
+    color: black;
+    padding-bottom: inherit;
+    margin-bottom: inherit;
+
+}
+
+h2
+{
+    font-size: inherit;
+
+}
+
+
+#header
+{
+   display: flex;
+    height: 50px;
+    justify-content: center;
+    width: 960px;
+
+}
+
+
+hr
+{
+    border: 1px solid #ebe8e8;
+    width: 100%;
+    margin: 0px 0px 0px 0px;
+}
+
+nav
+{
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto auto;
+    grid-template-rows: 1fr;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 980px;
+}
+nav a
+{
+    text-align: center;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-right:solid 1px #ebe8e8;
+    font-variant-caps: all-petite-caps;
+    text-decoration: none ;
+    color: #5b4746;
+    font-size: 13px;
+
+
+}
+nav a:hover
+{
+    border-right: solid 2px #fff100;
+}
+
+nav a:last-child
+{
+    border-right:none;
+}
+
+#main
+{
+    width: 100%;
+    height: 500px;
+    background: url("../images/headerimage.jpg") center center no-repeat;
+    background-size: cover;
+    color: white;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: #8D99AE 2px 2px;
+}
+#mainbody
+{
+    margin-left:calc(50% - (980px/2));
+    margin-right:calc(50%- (980px/2));
+    width: 980px;
+}
+#Recipes
+{
+    margin-top: 50px;
+    margin-bottom: 0px;
+
+
+}
+
+#Recipes section
+{
+    display:grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 15px;
+    margin-bottom: 0px;
+}
+
+
+
+#Recipes article
+{
+    border-top: #ddd solid 1px;
+    height: 100%;
+
+}
+
+.kicker
+{
+    font-variant-caps: all-small-caps;
+    font-size: 1.2em;
+    text-space: 1px;
+    color:#ff4d56;
+}
+
+#Recipes article a
+{
+    text-decoration: none;
+    color: black;
+}
+
+.body
+{
+    color: #666;
+    line-height: 2;
+}
+
+.auteur
+{
+    padding-right: 10Px;
+    border-right: solid #ebe8e8 1px;
+    font-style: italic;
+}
+
+.time
+{
+    color: #666;
+    font-style: italic;
+    padding-left: 10px;
+}
+
+#Recommended
+{
+    margin-top: 50px;
+
+}
+
+footer
+{
+    width: 100%;
+    line-height: 2em;
+}
+#left
+{
+    float: left;
+    width:50%;
+    text-align: right;
+    padding-right: 20px;
+    box-sizing: border-box;
+
+}
+
+#right
+{
+    float: right;
+    width: 50%;
+    box-sizing: border-box;
+    background: black;
+    color: white;
+    padding-left:20px;
+}
+
+/** Volgende CSS gaan we ze geven **/
+.respimg {
+    width: 100%;
+    height: auto;
+    display: block;
+    padding-bottom: 25Px;
+}
+
+@media screen and (max-width: 770px)
+{
+   #header
+   {
+       width: 600px;
+   }
+    nav
+    {
+        width:600px;
+    }
+
+    #mainbody
+    {
+        width: 600px;
+        margin-left:calc(50% - (600px/2));
+        margin-right:calc(50%- (600px/2));
+    }
+}
+
+@media screen and (min-width:800px)
+{
+    main header
+    {
+        font-size: 5em;
+    }
+}
+
+@media screen and (max-width: 1000px)
+{
+    #header
+    {
+        width: 750px;
+    }
+    nav
+    {
+        width:750px;
+    }
+
+    #mainbody
+    {
+        width: 750px;
+        margin-left: calc(50% - (750px / 2));
+        margin-right: calc(50% - (750px / 2));
+    }
+}

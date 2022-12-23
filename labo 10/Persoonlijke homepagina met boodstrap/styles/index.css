@@ -1,0 +1,94 @@
+body {
+    min-height: 100%;
+    background-image: url("images/road.png");
+    height: 100%;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#titel
+{
+    font-size:300%;
+    text-align: center;
+
+
+}
+
+a[class *='link']
+{
+    font-size: 140%;
+
+
+}
+.nav-pills .nav-link.active
+{
+    background: none;
+    color:black;
+}
+
+
+section
+{
+
+    margin: 50px 50px 50px 50px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    padding-top:20px;
+    background: rgba(255, 255, 255, 0.37);
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+section ul li
+{
+    margin-bottom: 10px;
+    font-size: 140%;
+    list-style: none;
+
+}
+
+.dark
+{
+    color: #191c12;
+
+}
+
+
+
+
+@media screen and (max-width: 1000px)
+{
+    #titel
+    {
+        font-size: 30px;
+        padding-top:10px;
+        padding-bottom: 10px;
+
+    }
+    a[class *='link']
+    {
+        font-size: 20px;
+    }
+
+    section
+    {
+        display: flex;
+        justify-content: center;
+        margin: 20px 20px 20px 20px;
+        padding: 10px 10px 10px 10px;
+
+    }
+    section ul li
+    {
+        margin-bottom:5px;
+        font-size: 20px;
+    }
+
+}

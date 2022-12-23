@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>Vertical Align</title>
+  <style>
+    .vert{
+      vertical-align: super; /*https://cssreference.io/property/vertical-align het moet een inline element zijn*/
+    }
+
+    /* centreren via line-height, nadeel: enkel voor één lijn */
+    .lineHeight{
+      vertical-align: middle;
+      line-height: 100px;
+      border : 1px solid black;
+    }
+
+    /* table-cell */
+    .parent {display: table;
+      height: 200px;
+      border: 1px solid black}
+
+    .child {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<p>dit is een voorbeeld </p>
+<p class="vert">dit is een voorbeeld </p>
+<p>dit <span class="vert">is</span> een voorbeeld </p>
+
+<p class="lineHeight">dit is een voorbeeld dit is een voorbeeld dit is een voorbeeld dit is een voorbeelddit is een voorbeelddit is een voorbeeld</p>
+
+<div class="parent">
+  <div class="child">Content here</div>
+</div>
+
+</body>

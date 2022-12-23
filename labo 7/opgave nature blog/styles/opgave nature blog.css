@@ -1,0 +1,40 @@
+
+.breete
+{
+    width: 1200px;
+    margin: auto;
+
+}
+.head
+{
+    background-image: url("images/header.jpg") ;
+    padding: 10px 0px 50px 15px;
+
+
+}
+nav
+{
+   background-color: #313131;
+
+
+}
+.titel
+{
+    color: white;
+    font-size: 5em;
+    margin: 1px;
+}
+nav > a
+{
+    color: green;
+}
+article
+{
+    background-color: #f6f6e4;
+    margin: 2px;
+}
+
+article > header> h1
+{
+    font-size: 2em;
+}
