@@ -1,11 +1,11 @@
 body
 {
     min-height: 100%;
-    background-image: url("images/natuur.png");
     height: 100%;
     margin: 0;
     border: 0;
     padding: 0;
+    background-image: url("images/natuur.png");
     background-position: center center;
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -76,7 +76,7 @@ a
 
 a:visited
 {
-    color: #294a05;
+    color: #1a6bd0;
 }
 
 
