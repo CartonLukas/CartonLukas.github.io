@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/style.css">
+    <script type="text/javascript" charset="utf-8"
+            src="scripts/code.js"></script>
+    <title>demo</title>
+</head>
+<body>
+<form method="post" action="student/index">
+ <label for="txtName">Name*:</label>
+ <input type="text" id="txtName"  required/>
+ <label for="txtPassword">Password*: </label>
+ <input type="password" id="txtPassword"/>
+ <label for="txtPhone">GSM*:</label>
+ <input type ="rel" id="txtPhone" pattern="04[0-9]{2}\/[0-9]{6}"/>
+ <label for="txtUrl">url:</label>
+ <input type="url" id=txtUrl />
+ <input type="submit" value="send">
+</form>
+</body>
+</html>
