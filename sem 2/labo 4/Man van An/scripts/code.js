@@ -1,27 +1,24 @@
-let zin="De man van An geeft geen hand aan ambetante verwanten";
-
+//afwerken
 
 const setup = () => {
-       findexOf();
-    //flastindexOf;
+    let txtTekst=document.getElementById("txtTekst");
+    let tekst=txtTekst.value;
+    let txtZoekTekst=document.getElementById("txtZoekTekst");
+    let zoekTekst=txtZoekTekst.value;
+    let txtAantal=document.getElementById("txtAantal");
 
-}
+    let aantal=telVoorkomens(tekst, zoekTekst);
+    txtAantal.textContent=aantal;
+};
 
-const findexOf = () =>
-{
+const telVoorkomens = (tekst, zoekTekst) => {
+    let result=0;
+    let idx=tekst.indexOf(zoekTekst);
+    while (idx!=-1) {
+        result++;
+        idx=tekst.indexOf(zoekTekst, idx+zoekTekst.length);
+    }
+    return result;
+};
 
-   let result =0;
-   let idx=zin.indexOf("an");
-   while (idx!==-1)
-   {
-       result++;
-       idx=zin.indexOf("an", idx+"an".length);
-   }
-   console.log(result);
-}
-
-const flastindexOf = () =>
-{
-
-}
 window.addEventListener("load", setup);
