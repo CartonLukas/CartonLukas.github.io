@@ -1,4 +1,4 @@
-//afwerken
+
 
 const setup = () => {
          document.getElementById("btnSubmit").addEventListener("click", telVoorkomens);
