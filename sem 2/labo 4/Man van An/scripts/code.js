@@ -1,24 +1,30 @@
 //afwerken
 
 const setup = () => {
-    let txtTekst=document.getElementById("txtTekst");
-    let tekst=txtTekst.value;
-    let txtZoekTekst=document.getElementById("txtZoekTekst");
-    let zoekTekst=txtZoekTekst.value;
-    let txtAantal=document.getElementById("txtAantal");
-
-    let aantal=telVoorkomens(tekst, zoekTekst);
-    txtAantal.textContent=aantal;
+         document.getElementById("btnSubmit").addEventListener("click", telVoorkomens);
 };
 
-const telVoorkomens = (tekst, zoekTekst) => {
+const telVoorkomens = () => {
+    let txtTekst=document.getElementById("txtTekst");
+    let tekst=txtTekst.value;
+    console.log(tekst);
+
+    let txtZoekTekst=document.getElementById("txtZoekTekst");
+    let zoekTekst=txtZoekTekst.value;
+    console.log(zoekTekst);
     let result=0;
     let idx=tekst.indexOf(zoekTekst);
-    while (idx!=-1) {
+    console.log(idx);
+    while (idx!==-1) {
         result++;
         idx=tekst.indexOf(zoekTekst, idx+zoekTekst.length);
+        console.log(idx);
     }
-    return result;
+    let txtAantal=document.getElementById("txtAantal");
+
+
+    txtAantal.textContent= result;
+
 };
 
 window.addEventListener("load", setup);
