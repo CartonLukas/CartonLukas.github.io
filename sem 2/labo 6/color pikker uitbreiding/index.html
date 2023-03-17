@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/style.css">
+    <script type="text/javascript" charset="utf-8"
+            src="scripts/code.js"></script>
+    <title>color picker uitbreiding</title>
+</head>
+<body>
+<div class="sliders">
+ <div>0 <input type="range" id="sldr" value="128" min="0" max="255" />255  red  <span id="lblRed">128</span></div>
+ <div>0 <input type="range" id="sldg" value="128" min="0" max="255" />255  Green  <span id="lblGreen">128</span></div>
+ <div>0 <input type="range" id="sldb" value="128" min="0" max="255" />255 blue  <span id="lblBlue">128</span></div>
+</div>
+<div class="swatch" id="swatch"> </div>
+<input type="button" id="btnSave" value="save">
+<p> output</p>
+<section id="swatchComponents"></section>
+
+
+</body>
+</html>
