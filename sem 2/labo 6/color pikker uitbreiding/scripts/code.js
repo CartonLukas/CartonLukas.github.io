@@ -103,7 +103,7 @@ const veranderhoofd = (e) => {
   let red=e.target.getAttribute("data_red");
   let green=e.target.getAttribute("data_green");
   let blue=e.target.getAttribute("data_blue");
-  hoofd.style.backgroundColor="rgb("+red+","+green+","+blue+")";
+  hoofd.style.backgroundColor="rgb("+red+","+green+","+blue+")";s
 }
 
 
