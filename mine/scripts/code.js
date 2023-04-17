@@ -4,16 +4,22 @@ let aantalBommen;
 let ontploft;
 let aantalvlaggen;
 let lengte;
+let minuten;
+let seconden;
+let timer;
 
 
 const setup = () => {
     document.getElementById("btnsubmit").addEventListener("click", bouwveld)
     document.getElementById("btnhelp").addEventListener("click", help)
-
-
     ontploft=false
     aantalvlaggen = 0;
     console.log("setup done");
+
+    minuten=0;
+    seconden=0;
+
+
 
 }
 
@@ -24,40 +30,45 @@ const help = () => {
                 "succes!!!")
 }
 const bouwveld = () => {
-
-    document.getElementById("btnsubmit").removeEventListener("click", bouwveld)
-    aantalBommen= document.getElementById("nmbBommen").value
-    console.log("bommen: "+ aantalBommen);
-
-
     let grote=document.getElementById("nmbgrote").value
     lengte=grote;
     console.log(grote);
 
-
-    let veld = document.getElementById("veld")
-
-    let arena = document.createElement("div")
-    arena.setAttribute("id", "arena");
-
-    veld.appendChild(arena);
-
-
-    for(let i=0; i<grote;i++)
+    if(grote > 10)
     {
-       arena.appendChild(maakrij(i));
-       // console.log("i:"+i);
-        for(let y=0; y<grote; y++)
-        {
-          let rij= document.getElementById("rij"+i);
-          rij.appendChild(bouwvak(i,y));
-        //  console.log("y:"+y);
+        window.alert("het veld kan maximum 10 groot zijn");
+    }else {
+        document.getElementById("btnsubmit").removeEventListener("click", bouwveld)
+        aantalBommen = document.getElementById("nmbBommen").value
+        console.log("bommen: " + aantalBommen);
+
+
+        let veld = document.getElementById("veld")
+
+        let arena = document.createElement("div")
+        arena.setAttribute("id", "arena");
+
+        veld.appendChild(arena);
+
+
+        for (let i = 0; i < grote; i++) {
+            arena.appendChild(maakrij(i));
+            // console.log("i:"+i);
+            for (let y = 0; y < grote; y++) {
+                let rij = document.getElementById("rij" + i);
+                rij.appendChild(bouwvak(i, y));
+                //  console.log("y:"+y);
+
+            }
 
         }
+        arena.appendChild(createCijferButton());
+        arena.appendChild(createVlagButton());
+        arena.appendChild(bouwKlok());
 
+        //start timer
+        timer = setInterval(klok, 1000);
     }
-    arena.appendChild(createCijferButton());
-    arena.appendChild(createVlagButton());
 }
 
 const createCijferButton=() =>{
@@ -99,6 +110,7 @@ const bouwvak =(i,y)=>{
     if(Math.floor(Math.random()*10)===1 && aantalBommen!==0)
     {
         div.setAttribute("data_item", "bom");
+        div.style.background="red"
         aantalBommen --;
         console.log(aantalBommen);
     }
@@ -117,6 +129,23 @@ const setcijfer = () => {
         kol.item(x).addEventListener("click", cijfer);
     }
 
+
+}
+
+const bouwKlok = ()=>{
+   let p= document.createElement("p");
+    p.setAttribute("id", "txtKlok");
+    let pTxt=document.createTextNode("Timer: ");
+    p.appendChild(pTxt);
+
+
+    let span= document.createElement("span");
+        span.setAttribute("id", "klok");
+    let spanTxt=document.createTextNode("00:00");
+    span.appendChild(spanTxt);
+
+    p.appendChild(span);
+    return p;
 
 }
 
@@ -149,7 +178,6 @@ const vlag = (event) => {
 
 
 const cijfer = (event) => {
-
     let div = event.target;
     div.style.background="blue";
     if(div.getAttribute("data_geklikt")=== "neen") {
@@ -166,10 +194,11 @@ const cijfer = (event) => {
             let bommenTxt= document.createTextNode(String(bommen))
             div.appendChild(bommenTxt);
 
-           /* if(bommen ===0)
+           if(bommen===0)
             {
-                vulOmLiggendeIn(i,y);
-            }*/
+                vulOmliggendeIn(i,y);
+            }
+
 
 
         }
@@ -179,104 +208,6 @@ const cijfer = (event) => {
    controleVeldVolMetVlaggen();
 
 }
-//voor automatisch te laten in vullen ( werkt nog niet)
-/*
-const cijferOm = (rij,kol) => {
-    if(rij >=0 || kol>=0) {
-
-
-        let div = getVak(rij, kol);
-        div.style.background = "blue";
-        if (div.getAttribute("data_geklikt") === "neen") {
-
-
-            div.setAttribute("data_geklikt", "ja");
-            let i = div.getAttribute("data_rij");
-            let y = div.getAttribute("data_nummer");
-            div.setAttribute("data_vc", "c");
-            let bommen = telbommen(i, y)
-            let bommentxt = document.createTextNode(String(bommen))
-            div.appendChild(bommentxt);
-            if (bommen === 0) {
-                vulOmLiggendeIn(i, y);
-                return true;
-            } else {
-                return false;
-            }
-
-        }
-        return false;
-    }
-}
-
-const getVak = (i,y) => {
-    let r= String(i);
-    let k= String(y);
-    let kol= document.getElementsByClassName("vak");
-    for(let x=0; x<kol.length;x++)
-    {
-
-        if(r===kol.item(x).getAttribute("data_rij")&& k===kol.item(x).getAttribute("data_nummer"))
-        {
-           return kol.item(x);
-        }
-    }
-
-
-}
-
-const vulOmLiggendeIn=(i,y) => {
-
-
-    let r= parseInt(i);
-    let k= parseInt(y);
-    getVak(i,y).style.background="green";
-    let kol=k+checkGetal(k);
-    let rij=r+(checkGetal(r));
-    while( rij<r+checkKlein(r)) {
-
-        while(kol<k+checkKlein(k))
-        {
-
-            getVak(rij,kol).style.background="yellow";
-           if(cijferOm(rij,kol))
-           {
-
-
-           }
-           else
-           {
-               kol++;
-           }
-
-        }
-        rij++;
-    }
-
-}
-
-const checkGetal = (getal) => {
-    if(getal ===0)
-    {
-        return 0;
-    }
-    else
-    {
-        return -1;
-    }
-
-}
-
-const checkKlein= (getal) => {
-    if(getal+1>=lengte)
-    {
-        return 1;
-    }
-    else
-    {
-        return 2;
-    }
-}*/
 
 const telbommen = (i,y) => {
     let bommen =0;
@@ -307,18 +238,134 @@ const isbom = (i,y) => {
 
        if(r===kol.item(x).getAttribute("data_rij")&& k===kol.item(x).getAttribute("data_nummer"))
        {
-           if(kol.item(x).getAttribute("data_item")==="bom")
-           {
-               return true
-           }
-           else
-           {
-               return false;
-           }
+           return kol.item(x).getAttribute("data_item") === "bom";
        }
     }
 
 }
+
+
+
+//automatisch invullen
+const vulOmliggendeIn = (i,y)=>{
+
+    vulEigenIn(i,y);
+    //vulVolgendeIn(i,y);
+
+}
+
+const vulEigenIn = (i,y)=>{
+    let r= controleNegatief(parseInt(i));
+
+    let rr=controleTegroot(parseInt(i));
+
+
+    while (r<=rr)
+    {
+        let k=controleNegatief( parseInt(y));
+
+        let kk=controleTegroot(parseInt(y));
+
+        while (k<=kk)
+        {
+            if(getVlak(r,k).getAttribute("data_geklikt")==="ja"||isbom(r,k))
+            {
+
+            }
+            else
+            {
+                vulIn(r,k)
+            }
+            k++;
+        }
+        r++;
+    }
+}
+const controleNegatief = (getal)=>{
+    if(getal-1<0)
+    {
+        return getal;
+    }
+    else
+    {
+        return getal-1;
+    }
+}
+
+const controleTegroot = (getal)=>{
+
+      if(getal===lengte)
+      {
+          return getal-1
+      }
+      else
+      {
+
+
+       if (getal < lengte - 1) {
+            return getal + 1;
+        } else {
+            return getal;
+            }
+
+    }
+
+}
+const vulIn=(i,y)=>{
+    let r= String(i);
+    let k= String(y);
+    let div=getVlak(r,k);
+    div.style.background="blue";
+    div.setAttribute("data_geklikt", "ja");
+    div.setAttribute("data_vc", "c");
+    let bommen= telbommen(i,y);
+    let bommenTxt= document.createTextNode(String(bommen))
+    div.appendChild(bommenTxt);
+
+}
+const getVlak = (i,y)=>{
+
+        let r= String(i);
+        let k= String(y);
+        let kol= document.getElementsByClassName("vak");
+        for(let x=0; x<kol.length;x++)
+        {
+            if(r===kol.item(x).getAttribute("data_rij")&& k===kol.item(x).getAttribute("data_nummer"))
+            {
+
+                return kol.item(x);
+            }
+        }
+
+
+}
+
+/*const vulVolgendeIn =(i,y)=> {
+
+    let r = controleNegatief(parseInt(i) - 1);
+    let x=3;
+
+        while (r < controleTegroot(parseInt(i) + x) ){
+            let k = controleNegatief(parseInt(y) - 1);
+            while (k < controleTegroot(parseInt(y) + x) ) {
+
+
+                if (telbommen(r, k) === 0 && getVlak(r, k).getAttribute("data_geklikt") === "neen") {
+                    vulIn(r, k)
+                }
+
+                k++;
+            }
+            r++;
+        }
+
+
+
+}*/
+
+
+
+
 
 const controleVeldVolMetVlaggen =() =>{
     let kol= document.getElementsByClassName("vak");
@@ -358,11 +405,11 @@ const eindeVlaggen = () => {
   einde("Proficiat je hebt het veld opgelost")
 }
 const eindeBommen = () => {
-  einde("Je bent ontplofd probeer opniuew")
+  einde("Je bent ontploft probeer opnieuw")
 }
 
 const einde = (text) => {
-
+    clearInterval(timer);
     blokkeer();
     let arena = document.getElementById("arena");
     let eindeText= document.createElement("p");
@@ -427,6 +474,48 @@ const reset = () =>{
      document.getElementById("arena").remove();
 
      setup();
+
+}
+
+const klok = () =>{
+    if(seconden<59)
+    {
+        seconden++;
+    }
+    else
+    {
+        minuten++;
+        seconden=0;
+    }
+    updateKlok();
+
+}
+
+const updateKlok=() =>{
+    let klok= document.getElementById("klok");
+   if(minuten<10)
+   {
+       if(seconden<10)
+       {
+           klok.textContent="0"+minuten+":"+"0"+seconden;
+       }
+       else
+       {
+           klok.textContent="0"+minuten+":"+seconden;
+       }
+   }else
+   {
+       if(seconden<10)
+       {
+           klok.textContent=minuten+":"+"0"+seconden;
+       }
+       else
+       {
+           klok.textContent=minuten+":"+seconden;
+       }
+   }
+
+
 
 }
 
