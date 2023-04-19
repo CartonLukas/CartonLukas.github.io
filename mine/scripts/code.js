@@ -110,7 +110,6 @@ const bouwvak =(i,y)=>{
     if(Math.floor(Math.random()*10)===1 && aantalBommen!==0)
     {
         div.setAttribute("data_item", "bom");
-        div.style.background="red"
         aantalBommen --;
         console.log(aantalBommen);
     }
