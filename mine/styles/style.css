@@ -15,5 +15,15 @@
     width: 5em;
     overflow: hidden;
     color: white;
-   text-align: center;
+    text-align: center;
+}
+
+.getal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.afbeeldingVlag{
+    background-image: url("../image/vlag.png");
 }

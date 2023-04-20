@@ -62,8 +62,8 @@ const bouwveld = () => {
             }
 
         }
-        arena.appendChild(createCijferButton());
-        arena.appendChild(createVlagButton());
+       // arena.appendChild(createCijferButton());
+        //arena.appendChild(createVlagButton());
         arena.appendChild(bouwKlok());
 
         //start timer
@@ -103,6 +103,7 @@ const bouwvak =(i,y)=>{
     let div =document.createElement("div");
     div.setAttribute("class", "vak");
     div.addEventListener("click", cijfer);
+    div.addEventListener("contextmenu",vlag)
     div.setAttribute("data_nummer",y);
     div.setAttribute("data_rij",i);
     div.setAttribute("data_geklikt", "neen");
@@ -158,17 +159,25 @@ const setvlag = () =>
 }
 
 const vlag = (event) => {
+    event.stopPropagation()
+    event.preventDefault();
    let div= event.target;
    if(div.getAttribute("data_vc" )!=="c") {
        if (div.getAttribute("data_geklikt") === "neen") {
-           div.style.background = "green";
+
+
+          let list= div.classList;
+          list.add("afbeeldingVlag");
            div.setAttribute("data_geklikt", "ja");
            div.setAttribute("data_vc", "v");
            aantalvlaggen++;
        } else {
-           div.style.background = "white";
+
            div.setAttribute("data_geklikt", "neen")
            div.setAttribute("data_vc", "?");
+           let list= div.classList;
+           list.remove("afbeeldingVlag");
+
            aantalvlaggen--;
        }
        controleVeldVolMetVlaggen();
@@ -178,9 +187,8 @@ const vlag = (event) => {
 
 const cijfer = (event) => {
     let div = event.target;
-    div.style.background="blue";
-    if(div.getAttribute("data_geklikt")=== "neen") {
-
+    if(div.getAttribute("data_geklikt")=== "neen"&&div.getAttribute("data_vc")==="?") {
+        div.style.background="blue";
         div.setAttribute("data_geklikt", "ja");
         let i = div.getAttribute("data_rij");
         let y = div.getAttribute("data_nummer");
@@ -188,24 +196,21 @@ const cijfer = (event) => {
         if (isbom(i, y)) {
             div.style.background = "red";
             eindeBommen()
-        } else {
+        }
+        else {
             let bommen= telbommen(i,y);
+            let p= document.createElement("p");
             let bommenTxt= document.createTextNode(String(bommen))
-            div.appendChild(bommenTxt);
+            p.appendChild(bommenTxt);
+            p.setAttribute("class", "getal");
+            div.appendChild(p)
 
-           if(bommen===0)
-            {
+           if(bommen===0) {
                 vulOmliggendeIn(i,y);
             }
-
-
-
         }
     }
-
-
    controleVeldVolMetVlaggen();
-
 }
 
 const telbommen = (i,y) => {
@@ -213,10 +218,8 @@ const telbommen = (i,y) => {
     let r= parseInt(i);
     let k= parseInt(y);
     for(let rij=(r-1); rij<(r+2);rij++) {
-
         for(let kol=(k-1);kol<(k+2);kol++)
         {
-
             if(isbom(rij,kol))
             {
                 bommen++;
@@ -318,8 +321,11 @@ const vulIn=(i,y)=>{
     div.setAttribute("data_geklikt", "ja");
     div.setAttribute("data_vc", "c");
     let bommen= telbommen(i,y);
+    let p= document.createElement("p");
     let bommenTxt= document.createTextNode(String(bommen))
-    div.appendChild(bommenTxt);
+    p.appendChild(bommenTxt);
+    p.setAttribute("class", "getal");
+    div.appendChild(p)
 
 }
 const getVlak = (i,y)=>{
@@ -426,13 +432,13 @@ const einde = (text) => {
 
 const blokkeer = () =>
 {
-    document.getElementById("btnCijfer").removeEventListener("click", setcijfer);
-    document.getElementById("btnVlag").removeEventListener("click", setvlag);
+    //document.getElementById("btnCijfer").removeEventListener("click", setcijfer);
+    //document.getElementById("btnVlag").removeEventListener("click", setvlag);
     let kol= document.getElementsByClassName("vak");
 
     for(let x=0; x<kol.length;x++) {
         kol.item(x).removeEventListener("click", cijfer);
-        kol.item(x).removeEventListener("clcik", vlag);
+        kol.item(x).removeEventListener("contextmenu", vlag);
     }
 }
 
