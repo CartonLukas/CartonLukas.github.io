@@ -29,7 +29,8 @@ const start = (e) =>{
 
 
 const geklikt = () =>{
-    if(document.getElementById("image").getAttribute("src")===global.IMAGE_PATH_PREFIX+"0"+global.IMAGE_PATH_SUFFIX)
+    console.log(document.getElementById("image").getAttribute("src"));
+    if(document.getElementById("image").getAttribute("src")==="./"+global.IMAGE_PATH_PREFIX+"0"+global.IMAGE_PATH_SUFFIX)
     {
         einde();
     }else
@@ -58,7 +59,10 @@ const einde = () => {
     clearInterval(global.timeoutId)
     window.alert("Het spel is gedaan \n Je hebt een score van "+ global.score)
 
+
 }
+
+
 
 window.addEventListener("load", setup);
 
