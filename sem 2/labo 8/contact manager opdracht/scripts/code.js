@@ -1,0 +1,71 @@
+let personen = [];
+
+// Event listener (btnBewaar click)
+// Bewaar de wijzigingen die in de user interface werden aangebracht
+const bewaarBewerktePersoon = () => {
+    console.log("Klik op de knop bewaar");
+
+    // valideer alle input data en controleer of er geen errors meer zijn
+    //valideer();
+    let persoon ={};
+    //nieuwe persoon bewaren
+    vulPersoonOpBasisVanUserInterface(persoon);
+    personen.push(persoon); //toevoegen aan interne lijst
+    VoegPersoonToeAanLijstInUserInterface(persoon);
+    // indien ok, bewaar de ingegeven data.
+        // een nieuw aangemaakte persoon voegen we toe
+        // een bestaande persoon in de lijst passen we aan
+
+    // zorg ervoor dat de naam en voornaam ook aangepast en/of zichtbaar zijn in de lijst na updaten
+};
+
+const  vulPersoonOpBasisVanUserInterface= (persoon)=>{
+    persoon.voornaam= document.getElementById("txtVoornaam").value.trim();
+    persoon.familienaam=document.getElementById("txtFamilienaam").value.trim();
+    persoon.geboorteDatum= document.getElementById("txtGeboorteDatum").value.trim();
+    persoon.email= document.getElementById("txtEmail").value.trim();
+    persoon.aantalKinderen = document.getElementById("txtAantalKinderen").value.trim();
+};
+const VoegPersoonToeAanLijstInUserInterface= (persoon) => {
+
+    let lstPersonen= document.getElementById("lstPersonen");
+    let option= document.createElement("option");
+    option.value= persoon.email;
+    option.text= persoon.voornaam+" "+persoon.familienaam;
+    lstPersonen.appendChild(option);
+    lstPersonen.selectedIndex= persoon.length-1;
+};
+
+
+
+
+// Event listener (btnNieuw click)
+const bewerkNieuwePersoon = () => {
+    console.log("Klik op de knop nieuw");
+    let lstPersonen= document.getElementById("lstPersonen");
+    lstPersonen.selectedIndex= -1;
+
+    // Zet de user interface klaar om de gegevens van een nieuwe persoon in te voeren
+    let  inputElm = document.querySelectorAll('input[type=text]')
+
+    inputElm.forEach((elem)=>{
+        elem.value="";
+    });
+};
+
+
+// onze setup functie die de event listeners registreert
+const setup = () => {
+    let btnBewaar = document.getElementById("btnBewaar");
+    btnBewaar.addEventListener("click", bewaarBewerktePersoon);
+
+    let btnNieuw = document.getElementById("btnNieuw");
+    btnNieuw.addEventListener("click", bewerkNieuwePersoon);
+
+    let lstPersonen = document.getElementById("lstPersonen");
+    // voeg een change listener toe aan lstPersonen. Bij het klikken op een option element in de lijst
+    // moet de data van die persoon getoond worden in het formulier
+    //lstPersonen.addEventListener("change", )
+};
+
+window.addEventListener("load", setup);

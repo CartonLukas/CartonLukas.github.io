@@ -19,7 +19,7 @@ const setup = () => {
 
 const start = (e) =>{
     document.getElementById("image").addEventListener("click",geklikt);
-   global.timeoutId= setInterval("VeranderImage()", 1000, global.timeoutId);
+   global.timeoutId= setInterval("VeranderImage()", global.MOVE_DELAY, global.timeoutId);
     e.target.remove();
     console.log()
 
