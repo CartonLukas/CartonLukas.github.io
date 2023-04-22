@@ -54,6 +54,8 @@ const bewerkNieuwePersoon = () => {
 };
 
 
+
+
 // onze setup functie die de event listeners registreert
 const setup = () => {
     let btnBewaar = document.getElementById("btnBewaar");
@@ -65,7 +67,7 @@ const setup = () => {
     let lstPersonen = document.getElementById("lstPersonen");
     // voeg een change listener toe aan lstPersonen. Bij het klikken op een option element in de lijst
     // moet de data van die persoon getoond worden in het formulier
-    //lstPersonen.addEventListener("change", )
+    //lstPersonen.addEventListener("change", );
 };
 
 window.addEventListener("load", setup);

@@ -1,0 +1,23 @@
+#speelveld{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 5px;
+    width: 50%;
+}
+
+.fout{
+    border: 5px solid red;
+
+}
+
+.goed{
+    border: 5px solid green;
+}
+.kaart{
+
+    box-sizing: border-box;
+}
+
+.omgedraaid{
+
+}
