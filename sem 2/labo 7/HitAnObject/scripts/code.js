@@ -43,8 +43,8 @@ const geklikt = () =>{
 const VeranderImage = () =>{
 
     let img = document.getElementById("image")
-    img.style.paddingTop= (Math.random()*800-global.IMAGE_SIZE)+"px"
-    img.style.paddingLeft= (Math.random()*600-global.IMAGE_SIZE)+"px"
+    img.style.marginTop= (Math.random()*800-global.IMAGE_SIZE)+"px"
+    img.style.marginLeft= (Math.random()*600-global.IMAGE_SIZE)+"px"
     img.setAttribute("src", "./"+global.IMAGE_PATH_PREFIX+Math.round( Math.random()*global.IMAGE_COUNT)+global.IMAGE_PATH_SUFFIX)
 
 
