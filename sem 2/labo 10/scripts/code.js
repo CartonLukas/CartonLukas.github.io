@@ -162,6 +162,7 @@ const slaOp=(site, search)=>{
         search: search
     }
 
+
     lijst.push(card);
 
     localStorage.setItem("Lukas_Carton.My_internet_start_page", JSON.stringify(lijst))

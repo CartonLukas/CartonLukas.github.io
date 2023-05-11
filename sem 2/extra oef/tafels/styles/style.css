@@ -1,0 +1,19 @@
+.header {
+    background-color: #122b40;
+    color: white;
+}
+
+.tafel {
+    margin: 10px;
+    width: 300px;
+    float: left;
+    border: solid 1px #122b40;
+}
+
+.tafel > div> div {
+    padding: 10px;
+}
+
+.even {
+    background-color: #d3d3d3;
+}

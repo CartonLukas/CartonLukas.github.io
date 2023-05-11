@@ -1,0 +1,13 @@
+kineplis
+altijd 8 stoelen naast elkaar
+
+bij reservatie
+altijd 3 stoelen naast elkaar
+grijze zijn bezet
+opties geven en vragen of ze akkoord zijn via alert
+stoelen worden groen
+
+bij nieuwe find seats
+worden ze grijs
+
+via tabel met waarde van true en false voor de stoelen
